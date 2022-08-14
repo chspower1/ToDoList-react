@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
-import { toDoState } from "./atoms";
+import { categoryState, IToDo, toDoState } from "./atoms";
 const Form = styled.form`
     display: flex;
     flex-direction: column;
@@ -12,10 +12,12 @@ const Error = styled.div`
 `;
 interface IForm {
     toDo: string;
-    date: Date;
+    // date: Date;
 }
 export default function CreateToDo() {
     const [toDos, setToDos] = useRecoilState(toDoState);
+    const [category, setCategory] = useRecoilState(categoryState);
+
     const {
         register,
         handleSubmit,
@@ -23,10 +25,7 @@ export default function CreateToDo() {
     } = useForm<IForm>();
 
     const onvalid = (data: IForm) => {
-        setToDos((prev) => [
-            { id: Date.now(), text: data.toDo, category: "TO_DO", date: data.date },
-            ...prev,
-        ]);
+        setToDos((prev) => [{ id: Date.now(), text: data.toDo, category }, ...prev]);
         console.log("완료!", toDos);
     };
     return (
@@ -39,18 +38,12 @@ export default function CreateToDo() {
                             value: 2,
                             message: "두 글자 이상 입력해주세요.",
                         },
-                        validate: {
-                            smae: (value) =>
-                                toDos.find((obj) => obj.text === value)
-                                    ? "이미 존재하는 할일 입니다."
-                                    : true,
-                        },
                     })}
                     type="text"
                     placeholder="해야할 일"
                 />
                 {errors.toDo?.message && <Error>{errors.toDo?.message}</Error>}
-                <input
+                {/* <input
                     {...register("date", {
                         required: "날짜를 선택해주세요",
                         validate: {
@@ -62,7 +55,7 @@ export default function CreateToDo() {
                     })}
                     type="date"
                 />
-                {errors.date?.message && <Error>{errors.date?.message}</Error>}
+                {errors.date?.message && <Error>{errors.date?.message}</Error>} */}
                 <button>완료!</button>
             </Form>
         </>

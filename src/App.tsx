@@ -137,6 +137,7 @@ const GlobalStyled = createGlobalStyle`
         border-spacing: 0;
     }
     * {
+        font-family: "Sebang";
         box-sizing: border-box;
     }
 `;
