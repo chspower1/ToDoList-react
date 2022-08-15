@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
-import { useRecoilState } from "recoil";
-import { categoryState, IToDo, toDoState } from "./atoms";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { categoryState, toDoState } from "./atoms";
 const Form = styled.form`
     display: flex;
     flex-direction: column;
@@ -16,7 +16,7 @@ interface IForm {
 }
 export default function CreateToDo() {
     const [toDos, setToDos] = useRecoilState(toDoState);
-    const [category, setCategory] = useRecoilState(categoryState);
+    const category = useRecoilValue(categoryState);
 
     const {
         register,

@@ -4,13 +4,17 @@ export interface IToDo {
     id: number;
     text: string;
     // date: Date;
-    category: Icategories;
+    category: Categories;
 }
-export type Icategories = "TO_DO" | "DONE" | "DOING";
+export enum Categories {
+    TO_DO = "TO_DO",
+    DOING = "DOING",
+    DONE = "DONE",
+}
 
-export const categoryState = atom<Icategories>({
+export const categoryState = atom<Categories>({
     key: "category",
-    default: "TO_DO",
+    default: Categories.TO_DO,
 });
 export const toDoState = atom<IToDo[]>({
     key: "toDo",
