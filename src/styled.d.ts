@@ -9,7 +9,10 @@ declare module "styled-components" {
         accentColor: string;
         navBgColor: string;
         navTextColor: string;
+        navHoverColor: string;
         btnBgColor: string;
+        btnHoverColor: string;
         btnBgWhite: string;
+        dangerColor: string;
     }
 }

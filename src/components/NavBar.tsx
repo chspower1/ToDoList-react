@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 // styled-components
 const Container = styled.section`
+    width: 300px;
     background-color: ${(props) => props.theme.navBgColor};
     color: ${(props) => props.theme.btnBgWhite};
 `;
@@ -15,33 +16,37 @@ const Profile = styled.header`
     align-items: center;
     flex-direction: column;
 `;
-const UserName = styled.h1`
-    font-size: 20px;
+const Title = styled.h1`
+    font-size: 28px;
 `;
-const UserState = styled.h1``;
 const NavList = styled.ul`
     width: 100%;
+    margin-left: 30px;
 `;
 const Li = styled.li`
     width: 100%;
-    padding: 10px 0px;
+    padding: 15px 0px;
     padding-left: 20px;
+    color: white;
+    transition: color 0.4s ease;
+    &:hover {
+        color: ${(props) => props.theme.navHoverColor};
+    }
 `;
 
 export default function NavBar() {
     return (
         <Container>
             <Profile>
-                <UserName>조호성</UserName>
-                <UserState>상태</UserState>
+                <Title>ToDos</Title>
             </Profile>
             <NavList>
+                <Link to="/">
+                    <Li>Home</Li>
+                </Link>
                 <Link to="/todolist">
                     <Li>To do list</Li>
                 </Link>
-                <Li>2</Li>
-                <Li>3</Li>
-                <Li>4</Li>
             </NavList>
         </Container>
     );

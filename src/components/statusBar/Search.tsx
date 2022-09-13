@@ -17,9 +17,6 @@ export default function Search() {
     return (
         <Form>
             <Searchbar type="text" placeholder="Search" />
-            <Btn>
-                <BeakerIcon className="h-10 w-10 text-blue-500" />
-            </Btn>
         </Form>
     );
 }

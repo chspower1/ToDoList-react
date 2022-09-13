@@ -5,8 +5,11 @@ export const darkTheme: DefaultTheme = {
     contentColor: "white",
     contentTextColor: "#7F7C82",
     accentColor: "#BFA2DB",
-    navBgColor: "#BFA2DB",
+    navBgColor: "#2f67a7",
     navTextColor: "white",
-    btnBgColor: "#F0D9FF",
+    navHoverColor: "#e4d0f7",
+    btnBgColor: "#2f67a7",
+    btnHoverColor: "#234a78",
     btnBgWhite: "white",
+    dangerColor: "#db5858",
 };

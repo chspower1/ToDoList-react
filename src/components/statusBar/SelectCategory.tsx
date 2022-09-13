@@ -2,8 +2,7 @@ import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { Categories, categoryState } from "../atoms";
 
-const Select = styled.select`
-`;
+const Select = styled.select``;
 export default function SelectCategory() {
     const [category, setCategory] = useRecoilState(categoryState);
     const onInput = (e: React.FormEvent<HTMLSelectElement>) => {
@@ -11,6 +10,7 @@ export default function SelectCategory() {
     };
     return (
         <Select value={category} onChange={onInput}>
+            <option value={Categories.ALL}>All</option>
             <option value={Categories.TO_DO}>To do</option>
             <option value={Categories.DOING}>Doing</option>
             <option value={Categories.DONE}>Done</option>

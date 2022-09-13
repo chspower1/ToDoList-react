@@ -3,10 +3,12 @@ import NavBar from "./components/NavBar";
 import StatusBar from "./components/statusBar/StatusBar";
 import ToDoList from "./components/toDoList/ToDoList";
 import styled from "styled-components";
+import Home from "./components/Home";
 
 const Container = styled.div`
     display: flex;
     background-color: ${(props) => props.theme.bgColor};
+    height: 100vh;
 `;
 const ContentContainer = styled(Container)`
     width: 100%;
@@ -20,6 +22,7 @@ export default function Router() {
                 <ContentContainer>
                     <StatusBar />
                     <Routes>
+                        <Route path="/" element={<Home />} />
                         <Route path="/todolist" element={<ToDoList />} />
                     </Routes>
                 </ContentContainer>

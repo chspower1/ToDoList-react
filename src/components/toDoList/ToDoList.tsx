@@ -18,6 +18,11 @@ const ToDos = styled.div`
     grid-template-columns: repeat(5, auto);
     height: 80%;
     margin-top: 50px;
+    transition: all 0.4s ease;
+`;
+const Title = styled.h1`
+    font-size: 28px;
+    margin: 60px 0px;
 `;
 
 export default function ToDoList() {
@@ -25,11 +30,15 @@ export default function ToDoList() {
 
     return (
         <Container>
+            <Title>To Do List</Title>
             <CreateToDo />
             <ToDos>
-                {toDos?.map((toDo: any) => (
-                    <ToDo key={toDo.id} {...toDo} />
-                ))}
+                {toDos
+                    ?.slice(0)
+                    .reverse()
+                    .map((toDo, index) => (
+                        <ToDo key={toDo.id} index={index} {...toDo} />
+                    ))}
             </ToDos>
         </Container>
     );
