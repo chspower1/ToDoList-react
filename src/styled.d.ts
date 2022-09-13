@@ -4,7 +4,15 @@ import "styled-components";
 declare module "styled-components" {
     export interface DefaultTheme {
         bgColor: string;
-        textColor: string;
+        contentColor: string;
+        contentTextColor: string;
         accentColor: string;
+        navBgColor: string;
+        navTextColor: string;
+        navHoverColor: string;
+        btnBgColor: string;
+        btnHoverColor: string;
+        btnBgWhite: string;
+        dangerColor: string;
     }
 }
