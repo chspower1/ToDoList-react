@@ -1,13 +1,9 @@
 import styled from "styled-components";
 import { BeakerIcon } from "@heroicons/react/solid";
-import tw from "twin.macro";
 
-const Form = styled.form`
-    ${tw`flex items-center relative`}
-`;
+const Form = styled.form``;
 
 const Searchbar = styled.input`
-    ${tw`w-24 h-12 my-1 mx-5 p-1 rounded-full`}
     background-color: ${(props) => props.theme.btnBgColor};
 `;
 

@@ -2,17 +2,25 @@ import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { categoryState, toDoState } from "../atoms";
+import { useEffect } from "react";
 const Form = styled.form`
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 50%;
 `;
 const Error = styled.div`
     color: red;
 `;
+const ToDoInput = styled.input`
+    width: 50%;
+    height: 50px;
+    border-radius: 25px;
+    text-align: center;
+`;
+
 interface IForm {
     toDo: string;
-    // date: Date;
 }
 export default function CreateToDo() {
     const [toDos, setToDos] = useRecoilState(toDoState);
@@ -28,9 +36,12 @@ export default function CreateToDo() {
         setToDos((prev) => [{ id: Date.now(), text: data.toDo, category }, ...prev]);
         console.log("완료!", toDos);
     };
+    useEffect(() => {
+        localStorage.setItem("localToDos", JSON.stringify(toDos));
+    }, [toDos]);
     return (
         <Form onSubmit={handleSubmit(onvalid)}>
-            <input
+            <ToDoInput
                 {...register("toDo", {
                     required: "해야할 일을 입력해 주세요.",
                     minLength: {
@@ -42,20 +53,7 @@ export default function CreateToDo() {
                 placeholder="해야할 일"
             />
             {errors.toDo?.message && <Error>{errors.toDo?.message}</Error>}
-            {/* <input
-                    {...register("date", {
-                        required: "날짜를 선택해주세요",
-                        validate: {
-                            after: (value) =>
-                                new Date(value) >= new Date()
-                                    ? true
-                                    : "지난 시간은 선택할 수 없습니다.",
-                        },
-                    })}
-                    type="date"
-                />
-                {errors.date?.message && <Error>{errors.date?.message}</Error>} */}
-            <button>완료!</button>
+            <button>작성하기!</button>
         </Form>
     );
 }

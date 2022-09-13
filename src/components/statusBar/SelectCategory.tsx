@@ -1,10 +1,8 @@
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import tw from "twin.macro";
 import { Categories, categoryState } from "../atoms";
 
 const Select = styled.select`
-    ${tw`w-60 text-center`}
 `;
 export default function SelectCategory() {
     const [category, setCategory] = useRecoilState(categoryState);

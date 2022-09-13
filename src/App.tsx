@@ -1,8 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import "./fonts/fonts.css";
-import ToDoList from "./components/toDoList/ToDoList";
-import NavBar from "./components/NavBar";
-import StatusBar from "./components/statusBar/StatusBar";
+import "./assets/fonts/fonts.css";
+
 import Router from "./Router";
 const GlobalStyled = createGlobalStyle`
     * {
