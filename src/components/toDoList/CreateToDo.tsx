@@ -69,7 +69,7 @@ export default function CreateToDo() {
         formState: { errors },
         reset,
         setError,
-    } = useForm<IForm>({ mode: "onBlur" });
+    } = useForm<IForm>({ mode: "onChange" });
 
     const onvalid = (data: IForm) => {
         reset({
@@ -83,6 +83,9 @@ export default function CreateToDo() {
     };
 
     useEffect(() => {
+        setError("toDo", {
+            message: "해야할 일을 입력해 주세요!",
+        });
         localStorage.setItem("localToDos", JSON.stringify(toDos));
     }, [toDos]);
 
