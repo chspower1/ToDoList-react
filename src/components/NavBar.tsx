@@ -5,11 +5,28 @@ const Container = styled.section`
     background-color: ${(props) => props.theme.navBgColor};
     color: ${(props) => props.theme.btnBgWhite};
 `;
-const Profile = styled.header``;
-const UserName = styled.h1``;
+const Profile = styled.header`
+    width: 100%;
+    height: 70px;
+    padding: 10px;
+    padding-left: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+`;
+const UserName = styled.h1`
+    font-size: 20px;
+`;
 const UserState = styled.h1``;
-const NavList = styled.ul``;
-const Li = styled.li``;
+const NavList = styled.ul`
+    width: 100%;
+`;
+const Li = styled.li`
+    width: 100%;
+    padding: 10px 0px;
+    padding-left: 20px;
+`;
 
 export default function NavBar() {
     return (
