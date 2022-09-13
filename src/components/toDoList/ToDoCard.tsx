@@ -3,8 +3,9 @@ import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { useEffect } from "react";
 
-const ToDoCard = styled.ul`
+const ToDoCardContainer = styled.ul`
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
@@ -13,7 +14,28 @@ const ToDoCard = styled.ul`
     border-radius: 10px;
     margin: 0px 15px;
     background-color: white;
-    
+`;
+const Number = styled.p`
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 14px;
+    color: #4e4e4e;
+`;
+const Box = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 0px 10px;
+    width: 100%;
+    align-items: flex-start;
+`;
+const Title = styled.h1`
+    font-size: 12px;
+    margin-bottom: 10px;
+    color: #4e4e4e;
+`;
+const Contents = styled.p`
+    font-size: 16px;
 `;
 const Category = styled.div``;
 
@@ -26,7 +48,7 @@ const DeleteBtn = styled(CategoryBtn)`
         background-color: #a33434;
     }
 `;
-export default function ToDo({ id, text, category, index }: IToDo) {
+export default function ToDoCard({ id, text, category, index }: IToDo) {
     const [toDos, setToDos] = useRecoilState(toDoState);
     const onClick = (newCategory: IToDo["category"]) => {
         setToDos((oldToDos) => {
@@ -49,22 +71,28 @@ export default function ToDo({ id, text, category, index }: IToDo) {
         localStorage.setItem("localToDos", JSON.stringify(toDos));
     }, [toDos]);
     return (
-        <ToDoCard>
-            <li>No.{index! + 1}</li>
-            <li>해야할 일 : {text}</li>
-            <li>상태 : {category}</li>
+        <ToDoCardContainer>
+            <Number>No.{index! + 1}</Number>
+            <Box>
+                <Title>해야할 일</Title>
+                <Contents>{text}</Contents>
+            </Box>
+            <Box>
+                <Title>상태</Title>
+                <Contents>{category}</Contents>
+            </Box>
             <Category>
-                {category !== Categories.DOING && (
-                    <CategoryBtn onClick={() => onClick(Categories.DOING)}>Doing</CategoryBtn>
-                )}
                 {category !== Categories.TO_DO && (
                     <CategoryBtn onClick={() => onClick(Categories.TO_DO)}>To do</CategoryBtn>
+                )}
+                {category !== Categories.DOING && (
+                    <CategoryBtn onClick={() => onClick(Categories.DOING)}>Doing</CategoryBtn>
                 )}
                 {category !== Categories.DONE && (
                     <CategoryBtn onClick={() => onClick(Categories.DONE)}>DONE</CategoryBtn>
                 )}
                 <DeleteBtn onClick={onClickDel}>Del</DeleteBtn>
             </Category>
-        </ToDoCard>
+        </ToDoCardContainer>
     );
 }

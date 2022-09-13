@@ -1,5 +1,5 @@
 import CreateToDo from "./CreateToDo";
-import ToDo from "./ToDo";
+import ToDoCard from "./ToDoCard";
 import { toDosSelector, categoryState, Categories } from "../atoms";
 import { useRecoilState, useRecoilValue } from "recoil";
 import NavBar from "../NavBar";
@@ -11,18 +11,18 @@ export const Container = styled.section`
     width: 100%;
     min-height: 100vh;
     height: auto;
-    justify-content: center;
     align-items: center;
 `;
 const ToDos = styled.div`
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 50px;
+    margin-top: 30px;
     transition: all 0.4s ease;
 `;
 const Title = styled.h1`
     font-size: 28px;
-    margin: 60px 0px;
+    margin-top: 60px;
 `;
 
 export default function ToDoList() {
@@ -37,7 +37,7 @@ export default function ToDoList() {
                     ?.slice(0)
                     .reverse()
                     .map((toDo, index) => (
-                        <ToDo key={toDo.id} index={index} {...toDo} />
+                        <ToDoCard key={toDo.id} index={index} {...toDo} />
                     ))}
             </ToDos>
         </Container>
