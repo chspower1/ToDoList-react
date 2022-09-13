@@ -5,19 +5,19 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import NavBar from "../NavBar";
 import styled from "styled-components";
 
-const Container = styled.section`
+export const Container = styled.section`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
+    height: auto;
     justify-content: center;
     align-items: center;
 `;
 const ToDos = styled.div`
     display: grid;
-    grid-template-columns: repeat(5, auto);
-    height: 80%;
-    margin-top: 50px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 50px;
     transition: all 0.4s ease;
 `;
 const Title = styled.h1`

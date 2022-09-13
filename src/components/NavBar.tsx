@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 // styled-components
-const Container = styled.section`
+const Wrap = styled.nav`
     width: 300px;
+    height: auto;
     background-color: ${(props) => props.theme.navBgColor};
     color: ${(props) => props.theme.btnBgWhite};
+`;
+const Container = styled.section`
+    position: fixed;
+    height: 100vh;
 `;
 const Profile = styled.header`
     width: 100%;
@@ -36,18 +41,20 @@ const Li = styled.li`
 
 export default function NavBar() {
     return (
-        <Container>
-            <Profile>
-                <Title>ToDos</Title>
-            </Profile>
-            <NavList>
-                <Link to="/">
-                    <Li>Home</Li>
-                </Link>
-                <Link to="/todolist">
-                    <Li>To do list</Li>
-                </Link>
-            </NavList>
-        </Container>
+        <Wrap>
+            <Container>
+                <Profile>
+                    <Title>ToDos</Title>
+                </Profile>
+                <NavList>
+                    <Link to="/">
+                        <Li>Home</Li>
+                    </Link>
+                    <Link to="/todolist">
+                        <Li>To do list</Li>
+                    </Link>
+                </NavList>
+            </Container>
+        </Wrap>
     );
 }

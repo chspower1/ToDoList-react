@@ -8,7 +8,7 @@ import Home from "./components/Home";
 const Container = styled.div`
     display: flex;
     background-color: ${(props) => props.theme.bgColor};
-    height: 100vh;
+    height: auto;
 `;
 const ContentContainer = styled(Container)`
     width: 100%;
