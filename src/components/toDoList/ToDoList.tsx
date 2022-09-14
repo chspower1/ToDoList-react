@@ -1,8 +1,8 @@
 import CreateToDo from "./CreateToDo";
 import ToDoCard from "./ToDoCard";
-import { toDosSelector, categoryState, Categories } from "../atoms";
-import { useRecoilState, useRecoilValue } from "recoil";
-import NavBar from "../NavBar";
+import { toDosSelector } from "../atoms";
+import { useRecoilValue } from "recoil";
+
 import styled from "styled-components";
 import SelectCategory from "./SelectCategory";
 

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { Categories, categoryState, toDoState } from "../atoms";
+import { useRecoilState } from "recoil";
+import { Categories, toDoState } from "../atoms";
 import { useEffect } from "react";
 const Form = styled.form`
     position: relative;
@@ -10,12 +10,6 @@ const Form = styled.form`
     align-items: center;
     width: 350px;
     padding: 30px 0px;
-`;
-const Label = styled.label`
-    margin: 10px;
-    width: 100%;
-    text-align: left;
-    padding-left: 10px;
 `;
 const ToDoInput = styled.input`
     width: 100%;
@@ -85,13 +79,12 @@ export default function CreateToDo() {
     useEffect(() => {
         setError("toDo", {
             message: "해야할 일을 입력해 주세요!",
+            type: "required",
         });
-        localStorage.setItem("localToDos", JSON.stringify(toDos));
-    }, [toDos]);
+    }, [toDos, errors]);
 
     return (
         <Form onSubmit={handleSubmit(onvalid)}>
-            {/* <Label htmlFor="toDo">해야 할 일</Label> */}
             <ToDoInput
                 {...register("toDo", {
                     required: "해야할 일을 입력해 주세요!",

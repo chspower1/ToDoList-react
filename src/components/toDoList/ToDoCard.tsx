@@ -1,7 +1,6 @@
 import { IToDo, toDoState, Categories } from "../atoms";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import { useEffect } from "react";
 import { Todo } from "@styled-icons/remix-line/Todo";
 import { PersonRunning } from "@styled-icons/fa-solid/PersonRunning";
 import { Delete } from "@styled-icons/fluentui-system-filled/Delete";
@@ -59,7 +58,7 @@ const CategoryBtn = styled.button`
     padding: 7px 10px;
     margin: 0px 5px;
     &.toDo {
-        background-color: #f0c507;
+        background-color: #ceb33a;
     }
     &.doing {
         background-color: #2352a8;
@@ -96,9 +95,6 @@ export default function ToDoCard({ id, text, category, index }: IToDo) {
             return [...front, ...back];
         });
     };
-    useEffect(() => {
-        localStorage.setItem("localToDos", JSON.stringify(toDos));
-    }, [toDos]);
     return (
         <ToDoCardContainer className={category}>
             <Number>No.{index! + 1}</Number>
