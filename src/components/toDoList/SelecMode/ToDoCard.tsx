@@ -1,4 +1,4 @@
-import { IToDo, toDoState, Categories } from "../atoms";
+import { IToDo, toDoState, Categories } from "../../../atoms";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { Todo } from "@styled-icons/remix-line/Todo";
@@ -67,8 +67,7 @@ const Contents = styled.p`
 const CategoryBox = styled(ToDoBox)`
     padding: 0px;
     background: none;
-    height: 30%;
-    margin-bottom: -15px;
+    height: 25%;
 `;
 const BtnBox = styled.div`
     display: flex;

@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
-import { Categories, toDoState } from "../atoms";
+import { Categories, toDoState } from "../../atoms";
 import { useEffect } from "react";
+const Container = styled.div``;
 const Form = styled.form`
     position: relative;
     display: flex;
@@ -49,7 +50,46 @@ const Correct = styled(Error)`
 const SubmitBtn = styled.button`
     font-size: 12px;
 `;
-
+const ColorGuid = styled.div`
+    position: absolute;
+    right: 5%;
+`;
+const GuideBox = styled.div`
+    display: flex;
+    margin: 5px 0px;
+    &.TO_DO {
+        div {
+            background-color: #f0c507;
+        }
+        h3 {
+            color: #967b03;
+        }
+    }
+    &.DOING {
+        div {
+            background-color: #2352a8;
+        }
+        h3 {
+            color: #083383;
+        }
+    }
+    &.DONE {
+        div {
+            background-color: #469253;
+        }
+        h3 {
+            color: #148326;
+        }
+    }
+`;
+const CategoryName = styled.h3`
+    font-size: 12px;
+    margin-left: 5px;
+`;
+const CategoryColor = styled.div`
+    width: 10px;
+    height: 10px;
+`;
 interface IForm {
     toDo: string;
     Category: string;
@@ -81,42 +121,58 @@ export default function CreateToDo() {
             message: "해야할 일을 입력해 주세요!",
             type: "required",
         });
-    }, [toDos, errors]);
+    }, [toDos]);
 
     return (
-        <Form onSubmit={handleSubmit(onvalid)}>
-            <ToDoInput
-                {...register("toDo", {
-                    required: "해야할 일을 입력해 주세요!",
-                    minLength: {
-                        value: 2,
-                        message: "두 글자 이상 입력해주세요.",
-                    },
-                })}
-                id="toDo"
-                type="text"
-                placeholder="해야할 일"
-                autoComplete="off"
-            />
-            <Box>
-                {errors.toDo?.message ? (
-                    <Error>{errors.toDo?.message}</Error>
-                ) : (
-                    <Correct>화이팅이에요!</Correct>
-                )}
-                <Select
-                    {...register("Category", {
-                        required: "선택해주세요!",
+        <Container>
+            <Form onSubmit={handleSubmit(onvalid)}>
+                <ToDoInput
+                    {...register("toDo", {
+                        required: "해야할 일을 입력해 주세요!",
+                        minLength: {
+                            value: 2,
+                            message: "두 글자 이상 입력해주세요.",
+                        },
                     })}
-                    id="Category"
-                >
-                    <option value={Categories.TO_DO}>To do</option>
-                    <option value={Categories.DOING}>Doing</option>
-                    <option value={Categories.DONE}>Done</option>
-                </Select>
-                {errors.Category?.message && <Error>{errors.Category?.message}</Error>}
-                <SubmitBtn>작성하기!</SubmitBtn>
-            </Box>
-        </Form>
+                    id="toDo"
+                    type="text"
+                    placeholder="해야할 일"
+                    autoComplete="off"
+                />
+                <Box>
+                    {errors.toDo?.message ? (
+                        <Error>{errors.toDo?.message}</Error>
+                    ) : (
+                        <Correct>화이팅이에요!</Correct>
+                    )}
+                    <Select
+                        {...register("Category", {
+                            required: "선택해주세요!",
+                        })}
+                        id="Category"
+                    >
+                        <option value={Categories.TO_DO}>To do</option>
+                        <option value={Categories.DOING}>Doing</option>
+                        <option value={Categories.DONE}>Done</option>
+                    </Select>
+                    {errors.Category?.message && <Error>{errors.Category?.message}</Error>}
+                    <SubmitBtn>작성하기!</SubmitBtn>
+                </Box>
+            </Form>
+            <ColorGuid>
+                <GuideBox className="TO_DO">
+                    <CategoryColor />
+                    <CategoryName>To do</CategoryName>
+                </GuideBox>
+                <GuideBox className="DOING">
+                    <CategoryColor />
+                    <CategoryName>Doing</CategoryName>
+                </GuideBox>
+                <GuideBox className="DONE">
+                    <CategoryColor />
+                    <CategoryName>Done</CategoryName>
+                </GuideBox>
+            </ColorGuid>
+        </Container>
     );
 }
