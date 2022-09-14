@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { HomeAlt } from "@styled-icons/boxicons-regular/HomeAlt";
 import { ClipboardTaskListRtl } from "@styled-icons/fluentui-system-regular/ClipboardTaskListRtl";
+import { ArrowIosBackOutline } from "@styled-icons/evaicons-outline/ArrowIosBackOutline";
+import { ArrowIosForwardOutline } from "@styled-icons/evaicons-outline/ArrowIosForwardOutline";
+
 // styled-components
 const Wrap = styled.nav<{ isFold: boolean }>`
     position: relative;
@@ -14,6 +17,9 @@ const Wrap = styled.nav<{ isFold: boolean }>`
 `;
 const Container = styled.section`
     position: sticky;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     top: 0px;
     width: 100%;
     height: 100vh;
@@ -47,18 +53,22 @@ const Li = styled.li`
     }
 `;
 const FoldBtn = styled.button`
+    text-align: right;
     z-index: 1000;
-    position: absolute;
-    right: 0px;
-    top: 50%;
 `;
 
 export default function NavBar() {
     const [isFold, setIsFold] = useState(false);
     return (
         <Wrap isFold={isFold}>
-            <FoldBtn onClick={() => setIsFold((cur) => !cur)}>{isFold ? "펴기" : "접기"}</FoldBtn>
             <Container>
+                <FoldBtn onClick={() => setIsFold((cur) => !cur)}>
+                    {isFold ? (
+                        <ArrowIosForwardOutline size={22} />
+                    ) : (
+                        <ArrowIosBackOutline size={22} />
+                    )}
+                </FoldBtn>
                 <Profile>{isFold ? "chs" : <Title>ToDos</Title>}</Profile>
                 <NavList>
                     <Link to="/">
@@ -77,6 +87,15 @@ export default function NavBar() {
                             </Li>
                         ) : (
                             <Li>To Do List</Li>
+                        )}
+                    </Link>
+                    <Link to="/dragboard">
+                        {isFold ? (
+                            <Li>
+                                <ClipboardTaskListRtl size={16} />
+                            </Li>
+                        ) : (
+                            <Li>Drag Board</Li>
                         )}
                     </Link>
                 </NavList>

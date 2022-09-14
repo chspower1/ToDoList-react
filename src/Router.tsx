@@ -1,8 +1,10 @@
 import { HashRouter as BrowserRouter, Route, Routes } from "react-router-dom";
+
 import NavBar from "./components/NavBar";
 import ToDoList from "./components/toDoList/ToDoList";
 import styled from "styled-components";
 import Home from "./components/Home";
+import DragBoard from "./components/DragBoard";
 
 const Container = styled.div`
     display: flex;
@@ -23,6 +25,7 @@ export default function Router() {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/todolist" element={<ToDoList />} />
+                        <Route path="/dragboard" element={<DragBoard />} />
                     </Routes>
                 </ContentContainer>
             </Container>

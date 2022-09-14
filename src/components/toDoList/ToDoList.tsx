@@ -1,6 +1,6 @@
 import CreateToDo from "./CreateToDo";
 import ToDoCard from "./ToDoCard";
-import { toDosSelector } from "../atoms";
+import { toDosSelector } from "../../atoms";
 import { useRecoilValue } from "recoil";
 
 import styled from "styled-components";
@@ -19,7 +19,7 @@ const ToDos = styled.div`
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 50px;
     margin-top: 30px;

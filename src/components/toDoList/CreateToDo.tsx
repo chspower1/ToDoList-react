@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
-import { Categories, toDoState } from "../atoms";
+import { Categories, toDoState } from "../../atoms";
 import { useEffect } from "react";
 const Form = styled.form`
     position: relative;
