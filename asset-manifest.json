@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/chspower1/ToDoList-react/static/css/main.4bc0b696.css",
+    "main.js": "/chspower1/ToDoList-react/static/js/main.70d47b8b.js",
+    "static/media/SEBANG-Gothic-OTF.otf": "/chspower1/ToDoList-react/static/media/SEBANG-Gothic-OTF.e673ab34f409ada50620.otf",
+    "static/media/SEBANG-Gothic-OTF-Bold.otf": "/chspower1/ToDoList-react/static/media/SEBANG-Gothic-OTF-Bold.799512f7506013ea5139.otf",
+    "index.html": "/chspower1/ToDoList-react/index.html",
+    "main.4bc0b696.css.map": "/chspower1/ToDoList-react/static/css/main.4bc0b696.css.map",
+    "main.70d47b8b.js.map": "/chspower1/ToDoList-react/static/js/main.70d47b8b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4bc0b696.css",
+    "static/js/main.70d47b8b.js"
+  ]
+}
