@@ -10,38 +10,50 @@ const ToDoCardContainer = styled.ul`
     display: flex;
     position: relative;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     width: 200px;
     height: 300px;
     border-radius: 10px;
+    padding: 0px 10px;
     margin: 0px 15px;
     background-color: white;
-    &.TO_DO {
-        border: 2px solid #f0c507;
-        background-color: #fffef9;
-    }
-    &.DOING {
-        border: 2px solid #2352a8;
-        background-color: #f9fbff;
-    }
-    &.DONE {
-        border: 2px solid #469253;
-        background-color: #ffffff;
-    }
 `;
 const Number = styled.p`
-    position: absolute;
-    top: 10px;
-    right: 10px;
     font-size: 14px;
     color: #4e4e4e;
 `;
-const Box = styled.div`
+const CardHeader = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0px 10px;
+`;
+const CategoryTag = styled.div`
+    width: auto;
+    padding: 7px;
+    border-radius: 0px 0px 5px 5px;
+    font-size: 14px;
+    color: white;
+    &.TO_DO {
+        background-color: #ceb33a;
+    }
+    &.DOING {
+        background-color: #2352a8;
+    }
+    &.DONE {
+        background-color: #469253;
+    }
+`;
+const ToDoBox = styled.div`
     display: flex;
     flex-direction: column;
-    padding: 0px 10px;
+    padding: 10px;
     width: 100%;
+    height: 50%;
+    border-radius: 10px;
+    background-color: #f8f8f8;
     align-items: flex-start;
 `;
 const Title = styled.h1`
@@ -52,11 +64,22 @@ const Title = styled.h1`
 const Contents = styled.p`
     font-size: 16px;
 `;
-const Category = styled.div``;
-
+const CategoryBox = styled(ToDoBox)`
+    padding: 0px;
+    background: none;
+    height: 30%;
+    margin-bottom: -15px;
+`;
+const BtnBox = styled.div`
+    display: flex;
+    justify-content: center;
+`;
 const CategoryBtn = styled.button`
     padding: 7px 10px;
-    margin: 0px 5px;
+    margin-right: 10px;
+    font-size: 12px;
+    width: 35%;
+    height: 100%;
     &.toDo {
         background-color: #ceb33a;
     }
@@ -69,9 +92,9 @@ const CategoryBtn = styled.button`
 `;
 const DeleteBtn = styled(CategoryBtn)`
     background-color: ${(props) => props.theme.dangerColor};
-    margin-top: -20px;
-    margin-bottom: -30px;
-    margin-left: 130px;
+    padding: 7px;
+    text-align: center;
+    width: 20%;
     &:hover {
         background-color: #a33434;
     }
@@ -97,50 +120,53 @@ export default function ToDoCard({ id, text, category, index }: IToDo) {
     };
     return (
         <ToDoCardContainer className={category}>
-            <Number>No.{index! + 1}</Number>
-            <Box>
+            <CardHeader>
+                <CategoryTag className={category}>{category}</CategoryTag>
+                <Number>No.{index! + 1}</Number>
+            </CardHeader>
+            <ToDoBox>
                 <Title>해야할 일</Title>
                 <Contents>{text}</Contents>
-            </Box>
-            <Box>
-                <Title>상태</Title>
-                <Contents>{category}</Contents>
-            </Box>
-            <Category>
-                {category !== Categories.TO_DO && (
-                    <CategoryBtn
-                        onClick={() => onClick(Categories.TO_DO)}
-                        title="To do"
-                        className="toDo"
-                    >
-                        <Todo size={24} />
-                        To do
-                    </CategoryBtn>
-                )}
-                {category !== Categories.DOING && (
-                    <CategoryBtn
-                        onClick={() => onClick(Categories.DOING)}
-                        title="Doing"
-                        className="doing"
-                    >
-                        <PersonRunning size={24} />
-                        Doing
-                    </CategoryBtn>
-                )}
-                {category !== Categories.DONE && (
-                    <CategoryBtn
-                        onClick={() => onClick(Categories.DONE)}
-                        title="Done"
-                        className="done"
-                    >
-                        <DownloadDone size={24} />
-                        Done
-                    </CategoryBtn>
-                )}
-            </Category>
-            <DeleteBtn onClick={onClickDel} title="Delete" className="delete">
-                <Delete size={18} />
-            </DeleteBtn>
+            </ToDoBox>
+
+            <CategoryBox>
+                <Title>카테고리 선택</Title>
+                <BtnBox>
+                    {category !== Categories.TO_DO && (
+                        <CategoryBtn
+                            onClick={() => onClick(Categories.TO_DO)}
+                            title="To do"
+                            className="toDo"
+                        >
+                            <Todo size={16} />
+                            Todo
+                        </CategoryBtn>
+                    )}
+                    {category !== Categories.DOING && (
+                        <CategoryBtn
+                            onClick={() => onClick(Categories.DOING)}
+                            title="Doing"
+                            className="doing"
+                        >
+                            <PersonRunning size={16} />
+                            Doing
+                        </CategoryBtn>
+                    )}
+                    {category !== Categories.DONE && (
+                        <CategoryBtn
+                            onClick={() => onClick(Categories.DONE)}
+                            title="Done"
+                            className="done"
+                        >
+                            <DownloadDone size={16} />
+                            Done
+                        </CategoryBtn>
+                    )}
+                    <DeleteBtn onClick={onClickDel} title="Delete" className="delete">
+                        <Delete size={22} />
+                    </DeleteBtn>
+                </BtnBox>
+            </CategoryBox>
         </ToDoCardContainer>
     );
 }
