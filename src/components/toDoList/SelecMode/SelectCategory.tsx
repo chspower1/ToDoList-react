@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import { Categories, categoryState } from "../../atoms";
+import { Categories, categoryState } from "../../../atoms";
 
 const Container = styled.div`
     position: relative;

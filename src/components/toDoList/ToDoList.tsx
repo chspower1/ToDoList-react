@@ -1,10 +1,11 @@
 import CreateToDo from "./CreateToDo";
-import ToDoCard from "./ToDoCard";
+import ToDoCard from "./SelecMode/ToDoCard";
 import { toDosSelector } from "../../atoms";
 import { useRecoilValue } from "recoil";
 
 import styled from "styled-components";
-import SelectCategory from "./SelectCategory";
+import SelectCategory from "./SelecMode/SelectCategory";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export const Container = styled.section`
     display: flex;
@@ -25,7 +26,7 @@ const ToDos = styled.div`
     margin-top: 30px;
     transition: all 0.4s ease;
 `;
-const Title = styled.h1`
+export const Title = styled.h1`
     font-size: 28px;
     margin-top: 60px;
 `;
@@ -34,18 +35,23 @@ export default function ToDoList() {
     const toDos = useRecoilValue(toDosSelector);
 
     return (
-        <Container>
-            <Title>To Do List</Title>
-            <CreateToDo />
-            <SelectCategory />
-            <ToDos>
-                {toDos
-                    ?.slice(0)
-                    .reverse()
-                    .map((toDo, index) => (
-                        <ToDoCard key={toDo.id} index={index} {...toDo} />
-                    ))}
-            </ToDos>
-        </Container>
+        <BrowserRouter>
+            <Container>
+                <Title>To Do List</Title>
+                <CreateToDo />
+                <Routes>
+                    <Route></Route>
+                    <SelectCategory />
+                    <ToDos>
+                        {toDos
+                            ?.slice(0)
+                            .reverse()
+                            .map((toDo, index) => (
+                                <ToDoCard key={toDo.id} index={index} {...toDo} />
+                            ))}
+                    </ToDos>
+                </Routes>
+            </Container>
+        </BrowserRouter>
     );
 }

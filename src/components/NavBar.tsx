@@ -5,6 +5,7 @@ import { HomeAlt } from "@styled-icons/boxicons-regular/HomeAlt";
 import { ClipboardTaskListRtl } from "@styled-icons/fluentui-system-regular/ClipboardTaskListRtl";
 import { ArrowIosBackOutline } from "@styled-icons/evaicons-outline/ArrowIosBackOutline";
 import { ArrowIosForwardOutline } from "@styled-icons/evaicons-outline/ArrowIosForwardOutline";
+import { DragDrop } from "@styled-icons/remix-line/DragDrop";
 
 // styled-components
 const Wrap = styled.nav<{ isFold: boolean }>`
@@ -92,7 +93,7 @@ export default function NavBar() {
                     <Link to="/dragboard">
                         {isFold ? (
                             <Li>
-                                <ClipboardTaskListRtl size={16} />
+                                <DragDrop size={16} />
                             </Li>
                         ) : (
                             <Li>Drag Board</Li>

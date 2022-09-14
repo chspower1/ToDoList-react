@@ -13,13 +13,8 @@ export enum Categories {
     DOING = "DOING",
     DONE = "DONE",
 }
-export interface ToDos {
-    TO_DO: IToDo[];
-    DOING: IToDo[];
-    DONE: IToDo[];
-}
-interface IToDoState {
-    [key: string]: string[];
+export interface IToDoState {
+    [key: string]: IToDo[];
 }
 
 export const categoryState = atom<Categories>({
@@ -41,11 +36,11 @@ export const toDosSelector = selector({
         else return toDos.filter((toDo) => toDo.category === category);
     },
 });
-export const dividedToDos = selector({
+export const dividedToDos = selector<IToDoState>({
     key: "dividedToDos",
     get: ({ get }) => {
         const toDos = get(toDoState);
-        const result: ToDos = { TO_DO: [], DOING: [], DONE: [] };
+        const result: IToDoState = { TO_DO: [], DOING: [], DONE: [] };
         toDos.map((toDo) => {
             if (toDo.category === "TO_DO") {
                 result.TO_DO.push(toDo);

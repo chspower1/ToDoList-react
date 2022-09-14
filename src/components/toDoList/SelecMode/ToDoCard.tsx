@@ -1,4 +1,4 @@
-import { IToDo, toDoState, Categories } from "../../atoms";
+import { IToDo, toDoState, Categories } from "../../../atoms";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { Todo } from "@styled-icons/remix-line/Todo";

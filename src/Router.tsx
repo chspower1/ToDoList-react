@@ -4,7 +4,7 @@ import NavBar from "./components/NavBar";
 import ToDoList from "./components/toDoList/ToDoList";
 import styled from "styled-components";
 import Home from "./components/Home";
-import DragBoard from "./components/DragBoard";
+import DragBoard from "./components/toDoList/DragMode/DragMode";
 
 const Container = styled.div`
     display: flex;
