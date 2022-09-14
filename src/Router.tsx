@@ -8,6 +8,7 @@ const Container = styled.div`
     display: flex;
     background-color: ${(props) => props.theme.bgColor};
     height: auto;
+    flex-flow: 1;
 `;
 const ContentContainer = styled(Container)`
     width: 100%;

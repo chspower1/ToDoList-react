@@ -81,7 +81,7 @@ export default function CreateToDo() {
             message: "해야할 일을 입력해 주세요!",
             type: "required",
         });
-    }, [toDos, errors]);
+    }, [toDos]);
 
     return (
         <Form onSubmit={handleSubmit(onvalid)}>

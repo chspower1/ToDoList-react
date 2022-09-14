@@ -67,8 +67,7 @@ const Contents = styled.p`
 const CategoryBox = styled(ToDoBox)`
     padding: 0px;
     background: none;
-    height: 30%;
-    margin-bottom: -15px;
+    height: 25%;
 `;
 const BtnBox = styled.div`
     display: flex;
