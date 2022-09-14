@@ -1,7 +1,6 @@
 import { IToDo, toDoState } from "../../../atoms";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
-
 import { Delete } from "@styled-icons/fluentui-system-filled/Delete";
 
 const MiniCardContainer = styled.ul`
@@ -96,6 +95,7 @@ const DeleteBtn = styled(CategoryBtn)`
         background-color: #a33434;
     }
 `;
+
 export default function MiniCard({ id, text, category, index }: IToDo) {
     const [toDos, setToDos] = useRecoilState(toDoState);
     const onClick = (newCategory: IToDo["category"]) => {

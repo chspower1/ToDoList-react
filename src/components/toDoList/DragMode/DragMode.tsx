@@ -7,26 +7,16 @@ import CategoryBoard from "./CategoryBoard";
 import styled from "styled-components";
 import { Container, Title } from "../ToDoList";
 
-const DargContainer = styled(Container)`
-    display: flex;
-    justify-content: center;
-`;
-const Box = styled.div`
-    display: flex;
-`;
 export default function DragMode() {
     const toDos = useRecoilValue(dividedToDos);
     const onDragEnd = () => {};
     return (
-        <DargContainer>
-            <Title>To Do List</Title>
-            <Box>
-                <DragDropContext onDragEnd={onDragEnd}>
-                    {Object.keys(toDos).map((boardId: string) => (
-                        <CategoryBoard boardId={boardId} toDos={toDos[boardId]} />
-                    ))}
-                </DragDropContext>
-            </Box>
-        </DargContainer>
+        <div>
+            <DragDropContext onDragEnd={onDragEnd}>
+                {Object.keys(toDos).map((boardId: string) => (
+                    <CategoryBoard boardId={boardId} toDos={toDos[boardId]} />
+                ))}
+            </DragDropContext>
+        </div>
     );
 }

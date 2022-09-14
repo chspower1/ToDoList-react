@@ -26,46 +26,7 @@ const Select = styled.select`
         border: 2px solid #469253;
     }
 `;
-const ColorGuid = styled.div`
-    position: absolute;
-    right: 5%;
-`;
-const Box = styled.div`
-    display: flex;
-    margin: 5px 0px;
-    &.TO_DO {
-        div {
-            background-color: #f0c507;
-        }
-        h3 {
-            color: #967b03;
-        }
-    }
-    &.DOING {
-        div {
-            background-color: #2352a8;
-        }
-        h3 {
-            color: #083383;
-        }
-    }
-    &.DONE {
-        div {
-            background-color: #469253;
-        }
-        h3 {
-            color: #148326;
-        }
-    }
-`;
-const CategoryName = styled.h3`
-    font-size: 12px;
-    margin-left: 5px;
-`;
-const CategoryColor = styled.div`
-    width: 10px;
-    height: 10px;
-`;
+
 export default function SelectCategory() {
     const [category, setCategory] = useRecoilState(categoryState);
     const onInput = (e: React.FormEvent<HTMLSelectElement>) => {
@@ -88,20 +49,6 @@ export default function SelectCategory() {
                     Done
                 </option>
             </Select>
-            <ColorGuid>
-                <Box className="TO_DO">
-                    <CategoryColor />
-                    <CategoryName>To do</CategoryName>
-                </Box>
-                <Box className="DOING">
-                    <CategoryColor />
-                    <CategoryName>Doing</CategoryName>
-                </Box>
-                <Box className="DONE">
-                    <CategoryColor />
-                    <CategoryName>Done</CategoryName>
-                </Box>
-            </ColorGuid>
         </Container>
     );
 }

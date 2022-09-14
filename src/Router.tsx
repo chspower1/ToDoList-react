@@ -25,7 +25,6 @@ export default function Router() {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/todolist" element={<ToDoList />} />
-                        <Route path="/dragboard" element={<DragBoard />} />
                     </Routes>
                 </ContentContainer>
             </Container>
