@@ -73,12 +73,12 @@ const CategoryBox = styled(ToDoBox)`
 const BtnBox = styled.div`
     display: flex;
     justify-content: center;
+    width: 100%;
 `;
 const CategoryBtn = styled.button`
     padding: 7px 10px;
     margin-right: 10px;
-    font-size: 12px;
-    width: 35%;
+    width: 40%;
     height: 100%;
     &.toDo {
         background-color: #ceb33a;
@@ -94,7 +94,6 @@ const DeleteBtn = styled(CategoryBtn)`
     background-color: ${(props) => props.theme.dangerColor};
     margin-right: 0px;
     padding: 7px;
-    text-align: center;
     width: 20%;
     &:hover {
         background-color: #a33434;
@@ -139,8 +138,7 @@ export default function ToDoCard({ id, text, category, index }: IToDo) {
                             title="To do"
                             className="toDo"
                         >
-                            <Todo size={16} />
-                            Todo
+                            <Todo size={20} />
                         </CategoryBtn>
                     )}
                     {category !== Categories.DOING && (
@@ -149,8 +147,7 @@ export default function ToDoCard({ id, text, category, index }: IToDo) {
                             title="Doing"
                             className="doing"
                         >
-                            <PersonRunning size={16} />
-                            Doing
+                            <PersonRunning size={20} />
                         </CategoryBtn>
                     )}
                     {category !== Categories.DONE && (
@@ -159,12 +156,11 @@ export default function ToDoCard({ id, text, category, index }: IToDo) {
                             title="Done"
                             className="done"
                         >
-                            <DownloadDone size={16} />
-                            Done
+                            <DownloadDone size={20} />
                         </CategoryBtn>
                     )}
                     <DeleteBtn onClick={onClickDel} title="Delete" className="delete">
-                        <Delete size={22} />
+                        <Delete size={20} />
                     </DeleteBtn>
                 </BtnBox>
             </CategoryBox>
