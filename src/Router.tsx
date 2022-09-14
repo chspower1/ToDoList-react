@@ -10,10 +10,13 @@ const Container = styled.div`
     display: flex;
     background-color: ${(props) => props.theme.bgColor};
     height: auto;
-    flex-flow: 1;
+    width: 100vw;
+    /* overflow: hidden; */
 `;
 const ContentContainer = styled(Container)`
-    width: 100%;
+    display: flex;
+    flex-grow: 1;
+    width: 80vw;
     flex-direction: column;
 `;
 export default function Router() {
@@ -21,12 +24,12 @@ export default function Router() {
         <BrowserRouter>
             <Container>
                 <NavBar />
-                <ContentContainer>
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/todolist" element={<ToDoList />} />
-                    </Routes>
-                </ContentContainer>
+                {/* <ContentContainer> */}
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/todolist" element={<ToDoList />} />
+                </Routes>
+                {/* </ContentContainer> */}
             </Container>
         </BrowserRouter>
     );

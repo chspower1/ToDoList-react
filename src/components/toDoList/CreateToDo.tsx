@@ -3,8 +3,7 @@ import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
 import { Categories, toDoState } from "../../atoms";
 import { useEffect } from "react";
-const Container = styled.div`
-`;
+const Container = styled.div``;
 const Form = styled.form`
     position: relative;
     display: flex;

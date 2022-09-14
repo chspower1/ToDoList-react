@@ -9,19 +9,21 @@ import { DragDrop } from "@styled-icons/remix-line/DragDrop";
 
 // styled-components
 const Wrap = styled.nav<{ isFold: boolean }>`
+    z-index: 1000;
     position: relative;
     transition: all 0.3s ease;
-    width: ${(props) => (props.isFold ? "50px" : "300px")};
+    width: ${(props) => (props.isFold ? "50px" : "20vw")};
     height: auto;
     background-color: ${(props) => props.theme.navBgColor};
     color: ${(props) => props.theme.btnBgWhite};
 `;
 const Container = styled.section`
-    position: sticky;
     display: flex;
+    position: sticky;
     flex-direction: column;
     align-items: flex-end;
     top: 0px;
+    left: 0px;
     width: 100%;
     height: 100vh;
 `;

@@ -9,7 +9,7 @@ import { useState } from "react";
 export const Container = styled.section`
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 70vw;
     min-height: 100vh;
     height: auto;
     align-items: center;

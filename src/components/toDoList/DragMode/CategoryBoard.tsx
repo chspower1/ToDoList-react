@@ -11,12 +11,14 @@ interface BoardProps {
 const Board = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    background-color: #dadada;
-    padding: 15px;
+    grid-template-rows: repeat(10, 1fr);
+    background-color: #edf2ff;
+    padding: 10px;
     margin: 15px;
+    overflow: hidden;
     border-radius: 10px;
 `;
-const CardContainer = styled.div`
+const CardBox = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,13 +32,13 @@ export default function CategoryBoard({ boardId, toDos }: BoardProps) {
                     {toDos.map((toDo: IToDo, index: number) => (
                         <Draggable draggableId={String(toDo.id)} index={index}>
                             {(magic, snapshot) => (
-                                <CardContainer
+                                <CardBox
                                     ref={magic.innerRef}
                                     {...magic.draggableProps}
                                     {...magic.dragHandleProps}
                                 >
                                     <MiniCard index={index} {...toDo} />
-                                </CardContainer>
+                                </CardBox>
                             )}
                         </Draggable>
                     ))}
