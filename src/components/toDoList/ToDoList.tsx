@@ -4,6 +4,7 @@ import { toDosSelector, categoryState, Categories } from "../atoms";
 import { useRecoilState, useRecoilValue } from "recoil";
 import NavBar from "../NavBar";
 import styled from "styled-components";
+import SelectCategory from "./SelectCategory";
 
 export const Container = styled.section`
     display: flex;
@@ -12,6 +13,7 @@ export const Container = styled.section`
     min-height: 100vh;
     height: auto;
     align-items: center;
+    padding: 0px 50px;
 `;
 const ToDos = styled.div`
     width: 100%;
@@ -20,7 +22,6 @@ const ToDos = styled.div`
     justify-content: center;
     align-items: center;
     gap: 50px;
-    padding: 20px;
     margin-top: 30px;
     transition: all 0.4s ease;
 `;
@@ -36,6 +37,7 @@ export default function ToDoList() {
         <Container>
             <Title>To Do List</Title>
             <CreateToDo />
+            <SelectCategory />
             <ToDos>
                 {toDos
                     ?.slice(0)

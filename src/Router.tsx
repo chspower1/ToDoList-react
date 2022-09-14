@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
-import StatusBar from "./components/statusBar/StatusBar";
 import ToDoList from "./components/toDoList/ToDoList";
 import styled from "styled-components";
 import Home from "./components/Home";
@@ -20,7 +19,6 @@ export default function Router() {
             <Container>
                 <NavBar />
                 <ContentContainer>
-                    <StatusBar />
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/todolist" element={<ToDoList />} />

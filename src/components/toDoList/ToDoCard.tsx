@@ -2,6 +2,10 @@ import { IToDo, toDoState, Categories } from "../atoms";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { useEffect } from "react";
+import { Todo } from "@styled-icons/remix-line/Todo";
+import { PersonRunning } from "@styled-icons/fa-solid/PersonRunning";
+import { Delete } from "@styled-icons/fluentui-system-filled/Delete";
+import { DownloadDone } from "@styled-icons/material-sharp/DownloadDone";
 
 const ToDoCardContainer = styled.ul`
     display: flex;
@@ -14,6 +18,18 @@ const ToDoCardContainer = styled.ul`
     border-radius: 10px;
     margin: 0px 15px;
     background-color: white;
+    &.TO_DO {
+        border: 2px solid #f0c507;
+        background-color: #fffef9;
+    }
+    &.DOING {
+        border: 2px solid #2352a8;
+        background-color: #f9fbff;
+    }
+    &.DONE {
+        border: 2px solid #469253;
+        background-color: #ffffff;
+    }
 `;
 const Number = styled.p`
     position: absolute;
@@ -40,10 +56,23 @@ const Contents = styled.p`
 const Category = styled.div``;
 
 const CategoryBtn = styled.button`
+    padding: 7px 10px;
     margin: 0px 5px;
+    &.toDo {
+        background-color: #f0c507;
+    }
+    &.doing {
+        background-color: #2352a8;
+    }
+    &.done {
+        background-color: #469253;
+    }
 `;
 const DeleteBtn = styled(CategoryBtn)`
     background-color: ${(props) => props.theme.dangerColor};
+    margin-top: -20px;
+    margin-bottom: -30px;
+    margin-left: 130px;
     &:hover {
         background-color: #a33434;
     }
@@ -71,7 +100,7 @@ export default function ToDoCard({ id, text, category, index }: IToDo) {
         localStorage.setItem("localToDos", JSON.stringify(toDos));
     }, [toDos]);
     return (
-        <ToDoCardContainer>
+        <ToDoCardContainer className={category}>
             <Number>No.{index! + 1}</Number>
             <Box>
                 <Title>해야할 일</Title>
@@ -83,16 +112,39 @@ export default function ToDoCard({ id, text, category, index }: IToDo) {
             </Box>
             <Category>
                 {category !== Categories.TO_DO && (
-                    <CategoryBtn onClick={() => onClick(Categories.TO_DO)}>To do</CategoryBtn>
+                    <CategoryBtn
+                        onClick={() => onClick(Categories.TO_DO)}
+                        title="To do"
+                        className="toDo"
+                    >
+                        <Todo size={24} />
+                        To do
+                    </CategoryBtn>
                 )}
                 {category !== Categories.DOING && (
-                    <CategoryBtn onClick={() => onClick(Categories.DOING)}>Doing</CategoryBtn>
+                    <CategoryBtn
+                        onClick={() => onClick(Categories.DOING)}
+                        title="Doing"
+                        className="doing"
+                    >
+                        <PersonRunning size={24} />
+                        Doing
+                    </CategoryBtn>
                 )}
                 {category !== Categories.DONE && (
-                    <CategoryBtn onClick={() => onClick(Categories.DONE)}>DONE</CategoryBtn>
+                    <CategoryBtn
+                        onClick={() => onClick(Categories.DONE)}
+                        title="Done"
+                        className="done"
+                    >
+                        <DownloadDone size={24} />
+                        Done
+                    </CategoryBtn>
                 )}
-                <DeleteBtn onClick={onClickDel}>Del</DeleteBtn>
             </Category>
+            <DeleteBtn onClick={onClickDel} title="Delete" className="delete">
+                <Delete size={18} />
+            </DeleteBtn>
         </ToDoCardContainer>
     );
 }
