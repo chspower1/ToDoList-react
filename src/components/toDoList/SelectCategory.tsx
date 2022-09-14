@@ -4,14 +4,17 @@ import { Categories, categoryState } from "../atoms";
 
 const Container = styled.div`
     position: relative;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 `;
 const Select = styled.select`
+    width: 100px;
     margin-top: 10px;
-    font-size: 16px;
-    padding: 10px;
+    font-size: 14px;
+    padding: 7px;
     border-radius: 10px;
     &.TO_DO {
         border: 2px solid #f0c507;
@@ -22,6 +25,46 @@ const Select = styled.select`
     &.DONE {
         border: 2px solid #469253;
     }
+`;
+const ColorGuid = styled.div`
+    position: absolute;
+    right: 5%;
+`;
+const Box = styled.div`
+    display: flex;
+    margin: 5px 0px;
+    &.TO_DO {
+        div {
+            background-color: #f0c507;
+        }
+        h3 {
+            color: #967b03;
+        }
+    }
+    &.DOING {
+        div {
+            background-color: #2352a8;
+        }
+        h3 {
+            color: #083383;
+        }
+    }
+    &.DONE {
+        div {
+            background-color: #469253;
+        }
+        h3 {
+            color: #148326;
+        }
+    }
+`;
+const CategoryName = styled.h3`
+    font-size: 12px;
+    margin-left: 5px;
+`;
+const CategoryColor = styled.div`
+    width: 10px;
+    height: 10px;
 `;
 export default function SelectCategory() {
     const [category, setCategory] = useRecoilState(categoryState);
@@ -45,6 +88,20 @@ export default function SelectCategory() {
                     Done
                 </option>
             </Select>
+            <ColorGuid>
+                <Box className="TO_DO">
+                    <CategoryColor />
+                    <CategoryName>To do</CategoryName>
+                </Box>
+                <Box className="DOING">
+                    <CategoryColor />
+                    <CategoryName>Doing</CategoryName>
+                </Box>
+                <Box className="DONE">
+                    <CategoryColor />
+                    <CategoryName>Done</CategoryName>
+                </Box>
+            </ColorGuid>
         </Container>
     );
 }

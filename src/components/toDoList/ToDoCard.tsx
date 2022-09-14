@@ -92,6 +92,7 @@ const CategoryBtn = styled.button`
 `;
 const DeleteBtn = styled(CategoryBtn)`
     background-color: ${(props) => props.theme.dangerColor};
+    margin-right: 0px;
     padding: 7px;
     text-align: center;
     width: 20%;
